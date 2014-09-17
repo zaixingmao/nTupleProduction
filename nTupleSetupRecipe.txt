@@ -1,0 +1,33 @@
+nTuple Production Setup
+
+cd ..
+
+git clone --recursive https://github.com/elaird/uwa.git
+git checkout -b bJetRegression origin/bJetRegression
+
+mv uwa UWAnalysis
+
+cd UWAnalysis
+
+kinit USER@CERN.CH
+aklog -c cern.ch
+export CVSROOT="/afs/cern.ch/user/c/cvscmssw/public/CMSSW"
+chmod 777 recipe53X.sh
+./recipe53X.sh
+
+cd ../nTupleProduction/
+source changeFiles.sh
+cd ..
+
+
+export USER_CXXFLAGS="-Wno-delete-non-virtual-dtor -Wno-error=unused-but-set-variable -Wno-error=unused-variable -Wno-error=sign-compare -Wno-error=reorder -Wno-error=maybe-uninitialized"
+
+scram b -j 8 #this is gonna take forever
+
+cd UWAnalysis/CRAB/LTau
+
+#To test runs
+cmsRun SUB-TT.py
+
+#To submit jobs
+source sub.sh

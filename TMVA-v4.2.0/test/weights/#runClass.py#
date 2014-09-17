@@ -1,0 +1,5 @@
+#!/user/bin/env python
+
+import os as os
+
+classCommand = 'python TMVAClassification_both.py -m BDT -i TMVARegApp_H2hh350_all.root'

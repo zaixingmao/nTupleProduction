@@ -1,0 +1,28 @@
+#BDT Training
+
+
+1) mJJ regression:
+    1. specify configs in TMVA-v4.2.0/test/runRegression.py
+    2. python TMVA-v4.2.0/test/runRegression.py
+
+2) make training samples:
+    1. for MC bkg
+        python /afs/hep.wisc.edu/home/zmao/myScripts/H2hh2bbTauTau/python/Tools/makeTrainingSample.py --i inputFile --o outputFile --c tightoppositebTag
+    2. for QCD bkg
+        python /afs/hep.wisc.edu/home/zmao/myScripts/H2hh2bbTauTau/python/Tools/makeTrainingSample.py --i inputFile --o outputFile --c relaxedsamebTag
+
+3) train BDT:
+    1. specify sample location in /afs/hep.wisc.edu/user/zmao/CMSSW_5_3_15/src/TMVA-v4.2.0/test/TMVAClassification_both.py
+    2. specify input variables in /afs/hep.wisc.edu/user/zmao/CMSSW_5_3_15/src/TMVA-v4.2.0/test/varsList.py
+    3. python /afs/hep.wisc.edu/user/zmao/CMSSW_5_3_15/src/TMVA-v4.2.0/test/runBDTClassification.py
+    4. make sure that the last training is what you want to use
+
+4) compare BDT:
+    1. specify input variables in /afs/hep.wisc.edu/user/zmao/myScripts/H2hh2bbTauTau/python/Tools/compareBDTEfficiency.py
+    2. python /afs/hep.wisc.edu/user/zmao/myScripts/H2hh2bbTauTau/python/Tools/compareBDTEfficiency.py
+
+
+5) apply BDT:
+    1. specify input variables in /afs/hep.wisc.edu/user/zmao/CMSSW_5_3_15/src/TMVA-v4.2.0/test/TMVAClassificationApplication_new.C
+    2. specify samples in /afs/hep.wisc.edu/user/zmao/CMSSW_5_3_15/src/TMVA-v4.2.0/test/runClassification.py
+    3. python /afs/hep.wisc.edu/user/zmao/CMSSW_5_3_15/src/TMVA-v4.2.0/test/runClassification.py

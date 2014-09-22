@@ -40,4 +40,4 @@ cp -r ./nTupleProduction/TMVA-v4.2.0/test ./TMVA-v4.2.0
 cd TMVA-v4.2.0/
 make
 cd test
-source setup.sh
+source setup.sh #you need to do this before using any TMVA related training

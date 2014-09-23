@@ -8,7 +8,7 @@ git clone https://github.com/zaixingmao/nTupleProduction.git
 
 git clone -d UWAnalysis https://github.com/elaird/uwa.git
 cd UWAnalysis
-git checkout bJetRegression
+git checkout save-cpu
 
 kinit USER@CERN.CH
 aklog -c cern.ch

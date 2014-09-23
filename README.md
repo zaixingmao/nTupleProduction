@@ -38,9 +38,11 @@ cmsRun SUB-TT.py
 
 #To submit jobs
 source sub.sh
+```
 
-#TMVA Setup
-under CMSSW_5_3_15/src
+####TMVA Setup
+```bash
+cd CMSSW_5_3_15/src
 wget http://sourceforge.net/projects/tmva/files/TMVA-v4.2.0.tgz
 tar xfz TMVA-v4.2.0.tgz
 cp -r ./nTupleProduction/TMVA-v4.2.0/test ./TMVA-v4.2.0

@@ -6,13 +6,14 @@ cmsenv
 
 git clone https://github.com/zaixingmao/nTupleProduction.git
 
-git clone -d UWAnalysis https://github.com/elaird/uwa.git
+git clone https://github.com/elaird/uwa.git UWAnalysis
 cd UWAnalysis
-git checkout save-cpu
+git checkout bJetRegression
 
-kinit USER@CERN.CH
-aklog -c cern.ch
-export CVSROOT="/afs/cern.ch/user/c/cvscmssw/public/CMSSW"
+# http://cms-sw.github.io/faq.html#how-do-i-access-the-old-cvs-repository-to-check-what-was-really-there
+kinit ${USER}@CERN.CH
+export CVSROOT=":ext:${USER}@lxplus5.cern.ch:/afs/cern.ch/user/c/cvscmssw/public/CMSSW"
+export CVS_RSH=ssh
 cd ..
 UWAnalysis/recipe53X_v2.sh
 

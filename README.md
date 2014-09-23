@@ -13,7 +13,6 @@ git checkout save-cpu
 kinit USER@CERN.CH
 aklog -c cern.ch
 export CVSROOT="/afs/cern.ch/user/c/cvscmssw/public/CMSSW"
-
 cd ..
 UWAnalysis/recipe53X_v2.sh
 
@@ -32,10 +31,8 @@ scram b -j 8
 ####run
 ```bash
 cd UWAnalysis/CRAB/LTau
-
 #To test runs
 cmsRun SUB-TT.py
-
 #To submit jobs
 source sub.sh
 ```

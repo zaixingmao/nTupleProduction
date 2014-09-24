@@ -8,7 +8,6 @@ git clone https://github.com/zaixingmao/nTupleProduction.git
 
 git clone https://github.com/elaird/uwa.git UWAnalysis
 cd UWAnalysis
-git checkout bJetRegression
 
 # http://cms-sw.github.io/faq.html#how-do-i-access-the-old-cvs-repository-to-check-what-was-really-there
 kinit ${USER}@CERN.CH

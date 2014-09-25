@@ -4,7 +4,7 @@ import FWCore.ParameterSet.Config as cms
 #from RecoMET.METProducers.PFMET_cfi import pfMet
 from JetMETCorrections.Configuration.JetCorrectionServicesAllAlgos_cff  import *
 from JetMETCorrections.Configuration.DefaultJEC_cff                     import *
-# from JetMETCorrections.METPUSubtraction.mvaPFMET_leptons_cfi        import *
+#from JetMETCorrections.METPUSubtraction.mvaPFMET_leptons_cfi        import *
 from JetMETCorrections.METPUSubtraction.mvaPFMET_leptons_PAT_cfi        import *
 from RecoJets.JetProducers.PileupJetIDParams_cfi                        import JetIdParams
 
@@ -19,7 +19,7 @@ pfMEtMVA = cms.EDProducer("PFMETProducerMVA",
     srcUncorrJets = cms.InputTag('ak5PFJets'),
     srcPFCandidates = cms.InputTag('particleFlow'),
     srcVertices = cms.InputTag('offlinePrimaryVertices'),
-    srcLeptons = cms.VInputTag("isomuons","isoelectrons","isotaus"), # NOTE: you need to set this to collections of electrons, muons and tau-jets
+    srcLeptons = cms.VInputTag("isotaus"), # NOTE: you need to set this to collections of electrons, muons and tau-jets
                                  #                                             passing the lepton reconstruction & identification criteria applied in your analysis
     minNumLeptons = cms.int32(0),
     srcRho = cms.InputTag('kt6PFJets','rho'),

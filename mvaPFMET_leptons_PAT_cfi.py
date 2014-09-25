@@ -1,6 +1,6 @@
 import FWCore.ParameterSet.Config as cms
 
-# Single muon for Wjets
+  										
 isomuons = cms.EDFilter(
         "PATMuonSelector",
             src = cms.InputTag("cleanPatMuons"),
@@ -21,9 +21,7 @@ isomuons = cms.EDFilter(
 
 isoelectrons = cms.EDFilter(
     "PATElectronSelector",
-#     "GsfElectronSelector",
             src = cms.InputTag("cleanPatElectrons"),
-#             src = cms.InputTag("gsfElectrons"),
             cut = cms.string(
             "abs(eta) < 2.5 && pt > 9.5"                               +
             "&& gsfTrack.trackerExpectedHitsInner.numberOfHits == 0"   +
@@ -47,12 +45,16 @@ isoelectrons = cms.EDFilter(
 
 isotaus = cms.EDFilter(
     "PATTauSelector",
-    src = cms.InputTag("cleanPatTaus"),#ESTausID
-    #cut = cms.string('pt > 19 && abs(eta) < 2.3 && tauID("decayModeFinding") && tauID("byIsolationMVA2raw") > 0.8 && tauID("againstElectronLoose") && tauID("againstMuonLoose2")'),
-    cut = cms.string('pt > 19 && abs(eta) < 2.3 && tauID("decayModeFinding") && tauID("byMediumCombinedIsolationDeltaBetaCorr3Hits") > 0 && tauID("againstElectronLoose") && tauID("againstMuonLoose2")'),
+    src = cms.InputTag("cleanPatTaus"),
+    cut = cms.string('pt > 19 &&' +
+    				 ' abs(eta) < 2.3 &&' +
+    				 ' tauID("decayModeFinding") &&' +
+    				 ' tauID("byCombinedIsolationDeltaBetaCorrRaw3Hits")<10 &&' +
+    				 ' tauID("againstElectronLoose") &&' +
+    				 ' tauID("againstMuonLoose2")'
+    				 ),
     filter = cms.bool(False)
 )
-
 isomuonseq     = cms.Sequence(isomuons)
 isoelectronseq = cms.Sequence(isoelectrons)
 isotauseq      = cms.Sequence(isotaus)
@@ -60,8 +62,8 @@ isotauseq      = cms.Sequence(isotaus)
 leptonSelection = cms.PSet(
     SelectEvents = cms.untracked.PSet(
     SelectEvents = cms.vstring(
-    'isomuonseq',
-    'isoelectronseq',
+#     'isomuonseq',
+#     'isoelectronseq',
     'isotauseq')
     )
     )

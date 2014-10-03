@@ -220,7 +220,6 @@ void MVAMETPairProducer::produce(edm::Event& evt, const edm::EventSetup& es)
 
   for (unsigned i = 0; i < leptonInfo.size(); ++i) {
   // compute MVA based MET and estimate of its uncertainty
-  std::cout<<"leptonPair: "<<i<<std::endl;
   std::vector<mvaMEtUtilities::JetInfo>    jetInfo         = computeJetInfo(*uncorrJets, *corrJets, *vertices, hardScatterVertex, *corrector,evt,es,leptonInfo[i],pfCandidateInfo);
 
   mvaMEtAlgo_.setInput(leptonInfo[i], jetInfo, pfCandidateInfo, vertexInfo);

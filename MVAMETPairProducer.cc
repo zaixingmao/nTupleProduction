@@ -225,10 +225,10 @@ void MVAMETPairProducer::produce(edm::Event& evt, const edm::EventSetup& es)
 
   mvaMEtAlgo_.setInput(leptonInfo[i], jetInfo, pfCandidateInfo, vertexInfo);
   mvaMEtAlgo_.setHasPhotons(false);
-  std::cout<<"leptonPair: "<<i<<std::endl;
   mvaMEtAlgo_.evaluateMVA();
 
   if (verbosity_) {
+    std::cout<<"leptonPair: "<<i<<std::endl;
     std::cout << "MVA MET: " << i << std::endl;
     for (unsigned j = 0; j < leptonInfo[i].size(); ++j) {
      std::cout <<"Lept"<<(j+1)<<": ";

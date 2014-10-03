@@ -1,12 +1,13 @@
-cp mvaPFMET_cff.py ../JetMETCorrections/METPUSubtraction/python/
-cp mvaPFMET_leptons_cff.py ../JetMETCorrections/METPUSubtraction/python/
-cp mvaPFMET_leptons_data_cff.py ../JetMETCorrections/METPUSubtraction/python/
-cp mvaPFMET_leptons_PAT_cfi.py ../JetMETCorrections/METPUSubtraction/python/
-cp mvaPFMET_leptons_PAT_old_cfi.py ../JetMETCorrections/METPUSubtraction/python/
-cp PFMETAlgorithmMVA.cc ../JetMETCorrections/METPUSubtraction/src/
+D=../JetMETCorrections/METPUSubtraction
+cp mvaPFMET_cff.py ${D}/python/
+cp mvaPFMET_leptons_cff.py ${D}/python/
+cp mvaPFMET_leptons_data_cff.py ${D}/python/
+cp mvaPFMET_leptons_PAT_cfi.py ${D}/python/
+cp mvaPFMET_leptons_PAT_old_cfi.py ${D}/python/
+cp PFMETAlgorithmMVA.cc ${D}/src/
 
-cp classes.h ../JetMETCorrections/METPUSubtraction/src/
-cp classes_def.xml ../JetMETCorrections/METPUSubtraction/src/
-cp MVAMETPairProducer.cc ../JetMETCorrections/METPUSubtraction/plugins/
-cp MVAMETPairProducer.hh ../JetMETCorrections/METPUSubtraction/plugins/
-cp BuildFile.xml ../JetMETCorrections/
+cp classes.h ${D}/src/
+cp classes_def.xml ${D}/src/
+cp MVAMETPairProducer.cc ${D}/plugins/
+cp MVAMETPairProducer.hh ${D}/plugins/
+cp BuildFile.xml ${D}/

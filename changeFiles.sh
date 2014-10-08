@@ -1,4 +1,4 @@
-D=${CMSSW_BASE}/src/JetMETCorrections/METPUSubtraction
+D=$1
 
 cp mvaPFMET_cff.py ${D}/python/
 cp mvaPFMET_leptons_cff.py ${D}/python/

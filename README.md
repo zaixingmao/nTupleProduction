@@ -1,30 +1,47 @@
-####cmssw/cvs
+####cmssw
 ```bash
 scram project CMSSW_5_3_15
 cd CMSSW_5_3_15/src
 cmsenv
+export USER_CXXFLAGS="-Wno-delete-non-virtual-dtor -Wno-error=unused-but-set-variable -Wno-error=unused-variable -Wno-error=maybe-uninitialized"
+```
 
+####git and cvs setup
+```bash
+git cms-init --https  # only strictly needed for newID
 git clone https://github.com/zaixingmao/nTupleProduction.git
-
 git clone https://github.com/elaird/uwa.git UWAnalysis
-cd UWAnalysis
 
 # http://cms-sw.github.io/faq.html#how-do-i-access-the-old-cvs-repository-to-check-what-was-really-there
 kinit ${USER}@CERN.CH
-export CVSROOT=":ext:${USER}@lxplus5.cern.ch:/afs/cern.ch/user/c/cvscmssw/public/CMSSW"
+export CVSROOT=":ext:${USER}@lxplus.cern.ch:/afs/cern.ch/user/c/cvscmssw/public/CMSSW"
 export CVS_RSH=ssh
-cd ..
-UWAnalysis/recipe53X_v2.sh
+```
+
+####choose an ID
+######old
+```bash
+UWAnalysis/recipe53X_oldID.sh
 
 cd nTupleProduction
 source changeFiles.sh
 cd ..
+
+export USER_CXXFLAGS="${USER_CXXFLAGS} -DOLD_TAU_ID"
+```
+
+######new
+```bash
+UWAnalysis/recipe53X_newID.sh
+
+#cd nTupleProduction
+#source changeFiles.sh
+#cd ..
+export USER_CXXFLAGS="${USER_CXXFLAGS} -Wno-error=reorder"
 ```
 
 ####build
 ```bash
-export USER_CXXFLAGS="-Wno-delete-non-virtual-dtor -Wno-error=unused-but-set-variable -Wno-error=unused-variable -Wno-error=maybe-uninitialized"
-#export USER_CXXFLAGS="${USER_CXXFLAGS} -Wno-error=sign-compare -Wno-error=reorder"
 scram b -j 8
 ```
 

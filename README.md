@@ -22,24 +22,22 @@ export CVS_RSH=ssh
 ######old
 ```bash
 UWAnalysis/recipe53X_oldID.sh
+export USER_CXXFLAGS="${USER_CXXFLAGS} -DOLD_TAU_ID"
 
 cd nTupleProduction
 ./changeFiles.sh ../JetMETCorrections/METPUSubtraction/
 cd ..
-
-export USER_CXXFLAGS="${USER_CXXFLAGS} -DOLD_TAU_ID"
 ```
 ####or
 
 ######new
 ```bash
 UWAnalysis/recipe53X_newID.sh
+export USER_CXXFLAGS="${USER_CXXFLAGS} -Wno-error=reorder"
 
 cd nTupleProduction
 ./changeFiles.sh ../RecoMET/METPUSubtraction/
 cd ..
-
-export USER_CXXFLAGS="${USER_CXXFLAGS} -Wno-error=reorder"
 ```
 
 ####build

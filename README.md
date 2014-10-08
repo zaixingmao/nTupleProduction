@@ -6,7 +6,7 @@ cmsenv
 export USER_CXXFLAGS="-Wno-delete-non-virtual-dtor -Wno-error=unused-but-set-variable -Wno-error=unused-variable -Wno-error=maybe-uninitialized"
 ```
 
-####git and cvs setup
+####git and cvs
 ```bash
 git cms-init --https  # only strictly needed for newID
 git clone https://github.com/zaixingmao/nTupleProduction.git
@@ -18,7 +18,7 @@ export CVSROOT=":ext:${USER}@lxplus.cern.ch:/afs/cern.ch/user/c/cvscmssw/public/
 export CVS_RSH=ssh
 ```
 
-####choose an ID
+####choose an ID:
 ######old
 ```bash
 UWAnalysis/recipe53X_oldID.sh
@@ -29,6 +29,7 @@ cd ..
 
 export USER_CXXFLAGS="${USER_CXXFLAGS} -DOLD_TAU_ID"
 ```
+####or
 
 ######new
 ```bash

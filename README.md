@@ -24,7 +24,7 @@ export CVS_RSH=ssh
 UWAnalysis/recipe53X_oldID.sh
 
 cd nTupleProduction
-source changeFiles.sh
+./changeFiles.sh ../JetMETCorrections/METPUSubtraction/
 cd ..
 
 export USER_CXXFLAGS="${USER_CXXFLAGS} -DOLD_TAU_ID"
@@ -35,9 +35,10 @@ export USER_CXXFLAGS="${USER_CXXFLAGS} -DOLD_TAU_ID"
 ```bash
 UWAnalysis/recipe53X_newID.sh
 
-#cd nTupleProduction
-#source changeFiles.sh
-#cd ..
+cd nTupleProduction
+./changeFiles.sh ../RecoMET/METPUSubtraction/
+cd ..
+
 export USER_CXXFLAGS="${USER_CXXFLAGS} -Wno-error=reorder"
 ```
 

@@ -1,4 +1,8 @@
+#ifdef OLD_TAU_ID
 #include "JetMETCorrections/METPUSubtraction/interface/PFMETAlgorithmMVA.h"
+#else
+#include "RecoMET/METPUSubtraction/interface/PFMETAlgorithmMVA.h"
+#endif
 
 #include "FWCore/ParameterSet/interface/FileInPath.h"
 #include "FWCore/Utilities/interface/Exception.h"

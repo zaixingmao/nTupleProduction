@@ -29,8 +29,14 @@
 
 #include "RecoMET/METAlgorithms/interface/METAlgo.h"
 #include "RecoMET/METAlgorithms/interface/PFSpecificAlgo.h"
+
+#ifdef OLD_TAU_ID
 #include "JetMETCorrections/METPUSubtraction/interface/PFMETAlgorithmMVA.h"
 #include "JetMETCorrections/METPUSubtraction/interface/mvaMEtUtilities.h"
+#else
+#include "RecoMET/METPUSubtraction/interface/PFMETAlgorithmMVA.h"
+#include "RecoMET/METPUSubtraction/interface/mvaMEtUtilities.h"
+#endif
 
 #include "RecoJets/JetProducers/interface/PileupJetIdAlgo.h"
 

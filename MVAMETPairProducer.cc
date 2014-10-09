@@ -1,4 +1,8 @@
+#ifdef OLD_TAU_ID
 #include "JetMETCorrections/METPUSubtraction/plugins/MVAMETPairProducer.hh"
+#else
+#include "RecoMET/METPUSubtraction/plugins/MVAMETPairProducer.hh"
+#endif
 
 #include "FWCore/Utilities/interface/Exception.h"
 

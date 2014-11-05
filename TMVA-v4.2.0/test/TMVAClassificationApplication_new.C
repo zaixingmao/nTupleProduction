@@ -85,27 +85,27 @@ void TMVAClassificationApplication_new(TString myMethodList = "" , TString iFile
    TMVA::Reader *reader = new TMVA::Reader("!Color:!Silent" );   
     TString weightTail = "_";
     weightTail = weightTail + massPoint;
- 
    // Create a set of variables and declare them to the reader
    // - the variable names MUST corresponds in name and type to those given in the weight file(s) used
-   Float_t var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, var14, var15, var16, var17;
+   Float_t var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, var14, var15, var16, var17, var18;
    reader->AddVariable( "svMass", &var1);
-//    reader->AddVariable( "fMass", &var2 );
    reader->AddVariable( "dRTauTau", &var3 );
    reader->AddVariable( "dRJJ", &var4 );
-   reader->AddVariable( "svPt", &var5 );
-   reader->AddVariable( "dRhh", &var6 );
+//    reader->AddVariable( "svPt", &var5 );
+//    reader->AddVariable( "dRhh", &var6 );
    reader->AddVariable( "met", &var7 );
    reader->AddVariable( "mJJReg", &var8 );
-   reader->AddVariable( "metTau1DPhi", &var9 );
-   reader->AddVariable( "metTau2DPhi", &var10);
-   reader->AddVariable( "metJ1DPhi", &var11);
+//    reader->AddVariable( "metTau1DPhi", &var9 );
+//    reader->AddVariable( "metTau2DPhi", &var10);
+//    reader->AddVariable( "metJ1DPhi", &var11);
    reader->AddVariable( "metJ2DPhi", &var12 );
-   reader->AddVariable( "metTauPairDPhi", &var13 );
-   reader->AddVariable( "metSvTauPairDPhi", &var14 );
-   reader->AddVariable( "metJetPairDPhi", &var15 );
-   reader->AddVariable( "CSVJ1", &var16 );
-   reader->AddVariable( "CSVJ2", &var17 );
+//    reader->AddVariable( "metTauPairDPhi", &var13 );
+//    reader->AddVariable( "metSvTauPairDPhi", &var14 );
+//    reader->AddVariable( "metJetPairDPhi", &var15 );
+//    reader->AddVariable( "CSVJ1", &var16 );
+//    reader->AddVariable( "CSVJ2", &var17 );
+//    reader->AddVariable( "fMassKinFit", &var2 );
+   reader->AddVariable( "chi2KinFit2", &var18 );
 
 
    // Spectator variables declared in the training have to be added to the reader, too
@@ -123,7 +123,7 @@ void TMVAClassificationApplication_new(TString myMethodList = "" , TString iFile
 
    // --- Book the MVA methods
    // Book method(s)
-  TString weightFileName = "/afs/hep.wisc.edu/home/zmao/CMSSW_5_3_15/src/TMVA-v4.2.0/test/weights/TMVAClassification_BDT.weights_";
+  TString weightFileName = "/nfs_scratch/zmao/test/CMSSW_5_3_15/src/TMVA-v4.2.0/test/weights/TMVAClassification_BDT.weights_";
   weightFileName += bkgSample;
   weightFileName += weightTail;
   reader->BookMVA("BDT method", weightFileName+".xml" ); 
@@ -172,22 +172,23 @@ void TMVAClassificationApplication_new(TString myMethodList = "" , TString iFile
    std::vector<Double_t> *vecVar5;
    std::vector<Double_t> *vecVar7;
    theTree->SetBranchAddress( "svMass", &vecVar1);
-   theTree->SetBranchAddress( "fMass", &var2);
    theTree->SetBranchAddress( "dRTauTau", &var3);
    theTree->SetBranchAddress( "dRJJ", &var4 );
-   theTree->SetBranchAddress( "svPt", &vecVar5 );
-   theTree->SetBranchAddress( "dRhh", &var6 );
+//    theTree->SetBranchAddress( "svPt", &vecVar5 );
+//    theTree->SetBranchAddress( "dRhh", &var6 );
    theTree->SetBranchAddress( "met", &vecVar7 );
    theTree->SetBranchAddress( "mJJReg", &var8 );
-   theTree->SetBranchAddress( "metTau1DPhi", &var9 );
-   theTree->SetBranchAddress( "metTau2DPhi", &var10);
-   theTree->SetBranchAddress( "metJ1DPhi", &var11);
+//    theTree->SetBranchAddress( "metTau1DPhi", &var9 );
+//    theTree->SetBranchAddress( "metTau2DPhi", &var10);
+//    theTree->SetBranchAddress( "metJ1DPhi", &var11);
    theTree->SetBranchAddress( "metJ2DPhi", &var12 );
-   theTree->SetBranchAddress( "metTauPairDPhi", &var13 );
-   theTree->SetBranchAddress( "metSvTauPairDPhi", &var14 );
-   theTree->SetBranchAddress( "metJetPairDPhi", &var15 );
-   theTree->SetBranchAddress( "CSVJ1", &var16 );
-   theTree->SetBranchAddress( "CSVJ2", &var17 );
+//    theTree->SetBranchAddress( "metTauPairDPhi", &var13 );
+//    theTree->SetBranchAddress( "metSvTauPairDPhi", &var14 );
+//    theTree->SetBranchAddress( "metJetPairDPhi", &var15 );
+//    theTree->SetBranchAddress( "CSVJ1", &var16 );
+//    theTree->SetBranchAddress( "CSVJ2", &var17 );
+//    theTree->SetBranchAddress( "fMassKinFit", &var2);
+   theTree->SetBranchAddress( "chi2KinFit2", &var18);
 
    //to get initial pre-processed events
    TH1F* cutFlow = (TH1F*)input->Get("preselection");
@@ -206,7 +207,7 @@ void TMVAClassificationApplication_new(TString myMethodList = "" , TString iFile
       if (ievt%1000 == 0) std::cout << "--- ... Processing event: " << ievt << std::endl;
       theTree->GetEntry(ievt);
       var1 = vecVar1->at(0);
-      var5 = vecVar5->at(0);
+//       var5 = vecVar5->at(0);
       var7 = vecVar7->at(0);
       // --- Return the MVA outputs and fill into histograms
 

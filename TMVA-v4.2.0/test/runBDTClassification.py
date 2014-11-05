@@ -26,15 +26,17 @@ varList = varsList.varList
 nVars = str(len(varList))
 nVars += ""
 
-massPoints = ["260", "300", "350"]
-
+# massPoints = ["260", "300", "350"]
+massPoints = ["260", "270", "280", "290", "300", "310", "320", "330", "340","350"]
+appendName = '_newKinFit'
 
 for massPoint in massPoints:
-    command1 = "python TMVAClassification_both.py -i %s | grep \"Variable Importance\" -A 20 > /scratch/zmao/TMVA/new2/varsRank%s_%s.txt" %(massPoint, massPoint, nVars)
-    command2 = "mv TMVA.root /scratch/zmao/TMVA/new2/TMVA%s_%s.root" %(massPoint, nVars)
+
+    command1 = "python TMVAClassification_both.py -i %s | grep \"Variable Importance\" -A 20 > /scratch/zmao/TMVA/new3/varsRank%s_%s%s.txt" %(massPoint, massPoint, nVars, appendName)
+    command2 = "mv TMVA.root /scratch/zmao/TMVA/new3/TMVA%s_%s%s.root" %(massPoint, nVars, appendName)
 
     os.system(command1)
     os.system(command2)
-    reWriteRankFile("/scratch/zmao/TMVA/new2/varsRank%s_%s.txt" %(massPoint, nVars))
+    reWriteRankFile("/scratch/zmao/TMVA/new3/varsRank%s_%s%s.txt" %(massPoint, nVars, appendName))
     print 
 

@@ -185,39 +185,35 @@ def main():
 #     tool.addFiles(ch=bkg1Chain, dirName="/hdfs/store/user/zmao/tt_3-SUB-TT", knownEventNumber=0, maxFileNumber=-1)
 #     tool.addFiles(ch=bkg2Chain, dirName="/hdfs/store/user/zmao/ZZ_3-SUB-TT", knownEventNumber=0, maxFileNumber=-1)
 
-    location = "/scratch/zmao/relaxed_regression4/"
+    location = "/scratch/zmao/triggerMatch/"
     massPoint = infname
-    if infname == "260":
-        infname = "TMVARegApp_H2hh260_all.root"
-    elif infname == "300":
-        infname = "TMVARegApp_H2hh300_all.root"
-    elif infname == "350":
-        infname = "TMVARegApp_H2hh350_all.root"
+    postName = '_addNewChi2'
 
+    infname = "TMVARegApp_H2hh%s_all%s.root" %(infname,postName)
     iFileSig = TFile.Open(location+infname)
 
-    iFileBkg1 = TFile.Open(location+"TMVARegApp_tt_eff_all_tightoppositebTag.root")
-    iFileBkg2 = TFile.Open(location+"TMVARegApp_ZZ_eff_all_tightoppositebTag.root")
-    iFileBkg3 = TFile.Open(location+"TMVARegApp_tt_semi_eff_all_tightoppositebTag.root")
-    iFileBkg4 = TFile.Open(location+"TMVARegApp_DY2JetsToLL_eff2_all_tightoppositebTag.root")
-    iFileBkg5 = TFile.Open(location+"TMVARegApp_DY3JetsToLL_eff2_all_tightoppositebTag.root")
-    iFileBkg6 = TFile.Open(location+"TMVARegApp_W1JetsToLNu_eff2_all_tightoppositebTag.root")
-    iFileBkg7 = TFile.Open(location+"TMVARegApp_W2JetsToLNu_eff2_all_tightoppositebTag.root")
-    iFileBkg8 = TFile.Open(location+"TMVARegApp_W3JetsToLNu_eff2_all_tightoppositebTag.root")
-    iFileBkg9 = TFile.Open(location+"TMVARegApp_WZJetsTo2L2Q_eff_all_tightoppositebTag.root")
+    iFileBkg1 = TFile.Open(location+"TMVARegApp_tt_eff_all%s_tightoppositebTag.root" %postName)
+    iFileBkg2 = TFile.Open(location+"TMVARegApp_ZZ_eff_all%s_tightoppositebTag.root" %postName)
+    iFileBkg3 = TFile.Open(location+"TMVARegApp_tt_semi_eff_all%s_tightoppositebTag.root" %postName)
+#     iFileBkg4 = TFile.Open(location+"TMVARegApp_DY2JetsToLL_eff2_all_tightoppositebTag.root")
+#     iFileBkg5 = TFile.Open(location+"TMVARegApp_DY3JetsToLL_eff2_all_tightoppositebTag.root")
+#     iFileBkg6 = TFile.Open(location+"TMVARegApp_W1JetsToLNu_eff2_all_tightoppositebTag.root")
+#     iFileBkg7 = TFile.Open(location+"TMVARegApp_W2JetsToLNu_eff2_all_tightoppositebTag.root")
+#     iFileBkg8 = TFile.Open(location+"TMVARegApp_W3JetsToLNu_eff2_all_tightoppositebTag.root")
+#     iFileBkg9 = TFile.Open(location+"TMVARegApp_WZJetsTo2L2Q_eff_all_tightoppositebTag.root")
 
-    iFileBkg = TFile.Open(location+"TMVARegApp_dataTotal_all_relaxedsamebTag.root")
+    iFileBkg = TFile.Open(location+"TMVARegApp_dataTotal_all%s_relaxedsamebTag.root" %postName)
 
     sigChain = iFileSig.Get("eventTree")
     bkg1Chain = iFileBkg1.Get("eventTree")
     bkg2Chain = iFileBkg2.Get("eventTree")
     bkg3Chain = iFileBkg3.Get("eventTree")
-    bkg4Chain = iFileBkg4.Get("eventTree")
-    bkg5Chain = iFileBkg5.Get("eventTree")
-    bkg6Chain = iFileBkg6.Get("eventTree")
-    bkg7Chain = iFileBkg7.Get("eventTree")
-    bkg8Chain = iFileBkg8.Get("eventTree")
-    bkg9Chain = iFileBkg9.Get("eventTree")
+#     bkg4Chain = iFileBkg4.Get("eventTree")
+#     bkg5Chain = iFileBkg5.Get("eventTree")
+#     bkg6Chain = iFileBkg6.Get("eventTree")
+#     bkg7Chain = iFileBkg7.Get("eventTree")
+#     bkg8Chain = iFileBkg8.Get("eventTree")
+#     bkg9Chain = iFileBkg9.Get("eventTree")
 
     bkgChain = iFileBkg.Get("eventTree")
 
@@ -230,28 +226,28 @@ def main():
     ZZWeight = 2.5/tmpHist2.GetBinContent(1)
     tmpHist3 = iFileBkg3.Get('preselection')
     tt_semiWeight = 109.3/tmpHist3.GetBinContent(1)
-    tmpHist4 = iFileBkg4.Get('preselection')
-    DY2JetsWeight = 181/tmpHist4.GetBinContent(1)
-    tmpHist5 = iFileBkg5.Get('preselection')
-    DY3JetsWeight = 51.1/tmpHist5.GetBinContent(1)
-    tmpHist6 = iFileBkg6.Get('preselection')
-    W1JetsToLNu = 5400/tmpHist6.GetBinContent(1)
-    tmpHist7 = iFileBkg7.Get('preselection')
-    W2JetsToLNu = 1750/tmpHist7.GetBinContent(1)
-    tmpHist8 = iFileBkg8.Get('preselection')
-    W3JetsToLNu = 519/tmpHist8.GetBinContent(1)
-    tmpHist9 = iFileBkg9.Get('preselection')
-    WZJetsTo2L2Q = 2.207/tmpHist9.GetBinContent(1)
+#     tmpHist4 = iFileBkg4.Get('preselection')
+#     DY2JetsWeight = 181/tmpHist4.GetBinContent(1)
+#     tmpHist5 = iFileBkg5.Get('preselection')
+#     DY3JetsWeight = 51.1/tmpHist5.GetBinContent(1)
+#     tmpHist6 = iFileBkg6.Get('preselection')
+#     W1JetsToLNu = 5400/tmpHist6.GetBinContent(1)
+#     tmpHist7 = iFileBkg7.Get('preselection')
+#     W2JetsToLNu = 1750/tmpHist7.GetBinContent(1)
+#     tmpHist8 = iFileBkg8.Get('preselection')
+#     W3JetsToLNu = 519/tmpHist8.GetBinContent(1)
+#     tmpHist9 = iFileBkg9.Get('preselection')
+#     WZJetsTo2L2Q = 2.207/tmpHist9.GetBinContent(1)
 
     print "tt:\t\t%.2f" %(bkg1Chain.GetEntries()*ttWeight*Lumi*1000)
     print "ZZ:\t\t%.2f" %(bkg2Chain.GetEntries()*ZZWeight*Lumi*1000)
     print "tt semi:\t%.2f" %(bkg3Chain.GetEntries()*tt_semiWeight*Lumi*1000)
-    print "DY2:\t\t%.2f" %(bkg4Chain.GetEntries()*DY2JetsWeight*Lumi*1000)
-    print "DY3:\t\t%.2f" %(bkg5Chain.GetEntries()*DY3JetsWeight*Lumi*1000)
-    print "WJ1:\t\t%.2f" %(bkg6Chain.GetEntries()*W1JetsToLNu*Lumi*1000)
-    print "WJ2:\t\t%.2f" %(bkg7Chain.GetEntries()*W2JetsToLNu*Lumi*1000)
-    print "WJ3:\t\t%.2f" %(bkg8Chain.GetEntries()*W3JetsToLNu*Lumi*1000)
-    print "WZJ:\t\t%.2f" %(bkg9Chain.GetEntries()*WZJetsTo2L2Q*Lumi*1000)
+#     print "DY2:\t\t%.2f" %(bkg4Chain.GetEntries()*DY2JetsWeight*Lumi*1000)
+#     print "DY3:\t\t%.2f" %(bkg5Chain.GetEntries()*DY3JetsWeight*Lumi*1000)
+#     print "WJ1:\t\t%.2f" %(bkg6Chain.GetEntries()*W1JetsToLNu*Lumi*1000)
+#     print "WJ2:\t\t%.2f" %(bkg7Chain.GetEntries()*W2JetsToLNu*Lumi*1000)
+#     print "WJ3:\t\t%.2f" %(bkg8Chain.GetEntries()*W3JetsToLNu*Lumi*1000)
+#     print "WZJ:\t\t%.2f" %(bkg9Chain.GetEntries()*WZJetsTo2L2Q*Lumi*1000)
 
     print "QCD:\t\t%.2f" %(bkgChain.GetEntries()*0.05)
 
@@ -265,12 +261,12 @@ def main():
     factory.AddBackgroundTree( bkg1Chain, ttWeight*Lumi*1000)
     factory.AddBackgroundTree( bkg2Chain, ZZWeight*Lumi*1000)
     factory.AddBackgroundTree( bkg3Chain, tt_semiWeight*Lumi*1000)
-    factory.AddBackgroundTree( bkg4Chain, DY2JetsWeight*Lumi*1000)
-    factory.AddBackgroundTree( bkg5Chain, DY3JetsWeight*Lumi*1000)
+#     factory.AddBackgroundTree( bkg4Chain, DY2JetsWeight*Lumi*1000)
+#     factory.AddBackgroundTree( bkg5Chain, DY3JetsWeight*Lumi*1000)
 #     factory.AddBackgroundTree( bkg6Chain, W1JetsToLNu*Lumi*1000)
 #     factory.AddBackgroundTree( bkg7Chain, W2JetsToLNu*Lumi*1000)
-    factory.AddBackgroundTree( bkg8Chain, W3JetsToLNu*Lumi*1000)
-    factory.AddBackgroundTree( bkg9Chain, WZJetsTo2L2Q*Lumi*1000)
+#     factory.AddBackgroundTree( bkg8Chain, W3JetsToLNu*Lumi*1000)
+#     factory.AddBackgroundTree( bkg9Chain, WZJetsTo2L2Q*Lumi*1000)
     factory.SetSignalWeightExpression('triggerEff')
     factory.SetBackgroundWeightExpression('triggerEff')
 
@@ -298,8 +294,8 @@ def main():
 
     # Apply additional cuts on the signal and background sample. 
     # example for cut: mycut = TCut( "abs(var1)<0.5 && abs(var2-0.5)<1" )
-    mycutSig = TCut( "iso1<1.5 && iso2<1.5 && CSVJ1 > 0.679 && CSVJ2 > 0.244 && abs(eta1)<2.1 && abs(eta2)<2.1 && charge1 + charge2 == 0" ) 
-    mycutBkg = TCut( "" ) 
+    mycutSig = TCut( "iso1<1.5 && iso2<1.5 && CSVJ1 > 0.679 && CSVJ2 > 0.244 && abs(eta1)<2.1 && abs(eta2)<2.1 && charge1 + charge2 == 0 && chi2KinFit > -10" ) 
+    mycutBkg = TCut( "CSVJ1 > 0.679 && CSVJ2 > 0.244 && abs(eta1)<2.1 && abs(eta2)<2.1 && chi2KinFit > -10" ) 
     
     # Here, the relevant variables are copied over in new, slim trees that are
     # used for TMVA training and testing
@@ -351,7 +347,7 @@ def main():
     
     # open the GUI for the result macros    
 #     gROOT.ProcessLine( "TMVAGui(\"%s\")" % outfname )
-    ChangeWeightName = 'mv /afs/hep.wisc.edu/home/zmao/CMSSW_5_3_15/src/TMVA-v4.2.0/test/weights/TMVAClassification_BDT.weights.xml /afs/hep.wisc.edu/home/zmao/CMSSW_5_3_15/src/TMVA-v4.2.0/test/weights/TMVAClassification_BDT.weights_both_%s.xml' %massPoint
+    ChangeWeightName = 'mv /nfs_scratch/zmao/test/CMSSW_5_3_15/src/TMVA-v4.2.0/test/weights/TMVAClassification_BDT.weights.xml /nfs_scratch/zmao/test/CMSSW_5_3_15/src/TMVA-v4.2.0/test/weights/TMVAClassification_BDT.weights_both_%s.xml' %massPoint
     os.system(ChangeWeightName)    
     # keep the ROOT thread running
 #     gApplication.Run() 

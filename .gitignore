@@ -1,0 +1,7 @@
+*~
+TMVA-v4.2.0/test/BDT_C.d
+TMVA-v4.2.0/test/BDT_C.so
+TMVA-v4.2.0/test/plots/*.eps
+TMVA-v4.2.0/test/plots/*.png
+TMVA-v4.2.0/test/*.pyc
+TMVA-v4.2.0/test/weights/*

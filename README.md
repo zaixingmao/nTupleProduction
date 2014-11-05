@@ -11,7 +11,7 @@ cd UWAnalysis
 
 # http://cms-sw.github.io/faq.html#how-do-i-access-the-old-cvs-repository-to-check-what-was-really-there
 kinit ${USER}@CERN.CH
-export CVSROOT=":ext:${USER}@lxplus5.cern.ch:/afs/cern.ch/user/c/cvscmssw/public/CMSSW"
+export CVSROOT=":ext:${USER}@lxplus.cern.ch:/afs/cern.ch/user/c/cvscmssw/public/CMSSW"
 export CVS_RSH=ssh
 cd ..
 UWAnalysis/recipe53X_v2.sh

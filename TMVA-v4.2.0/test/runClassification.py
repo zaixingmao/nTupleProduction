@@ -2,28 +2,28 @@
 
 import os as os
 
-fileList = ['H2hh260',
-            'H2hh270',
-            'H2hh280',
-            'H2hh290',
-            'H2hh300',
-            'H2hh310',
-            'H2hh320',
-            'H2hh330',
-            'H2hh340',
-            'H2hh350',
+fileList = [#  'H2hh260_all_addNewChi2',
+            'H2hh270_all_addNewChi2',
+            'H2hh280_all_addNewChi2',
+            'H2hh290_all_addNewChi2',
+            'H2hh300_all_addNewChi2',
+            'H2hh310_all_addNewChi2',
+            'H2hh320_all_addNewChi2',
+            'H2hh330_all_addNewChi2',
+            'H2hh340_all_addNewChi2',
+            'H2hh350_all_addNewChi2',
 
-            'tt_eff',
-            'tt_semi_eff',
-            'ZZ_eff',
-            'dataTotal',
+            'tt_eff_all_addNewChi2',
+            'tt_semi_eff_all_addNewChi2',
+            'ZZ_eff_all_addNewChi2',
+            'dataTotal_all_addNewChi2',
 
-#             'DY1JetsToLL_eff2',
-#             'DY2JetsToLL_eff2',
-#             'DY3JetsToLL_eff2',
-#             'W1JetsToLNu_eff2',
-#             'W2JetsToLNu_eff2',
-#             'W3JetsToLNu_eff2',
+            'DY1JetsToLL_all',
+            'DY2JetsToLL_all',
+            'DY3JetsToLL_all',
+            'W1JetsToLNu_all',
+            'W2JetsToLNu_all',
+            'W3JetsToLNu_all',
 #             'WZJetsTo2L2Q_eff',
 #             'QCD_Pt-50to80',
 #               'VBF_HToTauTau',
@@ -37,10 +37,14 @@ fileList = ['H2hh260',
 massPoints = ['260', '270','280','290','300','310','320','330','340', '350']
 nVars = [7]
 
+outputLocation = '/scratch/zmao/BDTStudy/7_noDPhiMetJ2_mJJ/'
+
 for iNVars in nVars:
     for massPoint in massPoints:
-        location = '/scratch/zmao/newKinFit/%i/%s/' %(iNVars, massPoint)
-
+        location = '/scratch/zmao/newKinFit/8_2/%s/' %(massPoint)
+        oLocation = '%s%s/' %(outputLocation, massPoint)
+        if not os.path.isdir(oLocation):
+            os.makedirs(oLocation)
         for iFile in fileList:
         #     rootCommand = "root -l -q  BJetRegressionApplication.C\(\\\"BDTG\\\",\\\"%s_all.root\\\",\\\"%s\\\"\)" %(iFile, location)
         #     os.system(rootCommand)    
@@ -48,5 +52,5 @@ for iNVars in nVars:
         #     os.system(rootCommand)
         #     rootCommand = "root -l -q  TMVAClassificationApplication_new.C\(\\\"BDT\\\",\\\"ClassApp_EWK_TMVARegApp_%s_all.root\\\",\\\"QCD\\\",\\\"%s\\\",\\\"%s\\\"\)" %(iFile, location, massPoint)
         #     os.system(rootCommand)
-            rootCommand = "root -l -q  TMVAClassificationApplication_new.C\(\\\"BDT\\\",\\\"TMVARegApp_%s_all_addNewChi2.root\\\",\\\"both\\\",\\\"%s\\\",\\\"%s\\\"\)" %(iFile, location, massPoint)
+            rootCommand = "root -l -q  TMVAClassificationApplication_new.C\(\\\"BDT\\\",\\\"TMVARegApp_%s.root\\\",\\\"both\\\",\\\"%s\\\",\\\"%s\\\",\\\"%s\\\"\)" %(iFile, location, massPoint, oLocation)
             os.system(rootCommand)

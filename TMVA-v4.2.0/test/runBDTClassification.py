@@ -28,7 +28,7 @@ nVars += ""
 
 # massPoints = ["260", "300", "350"]
 massPoints = ["260", "270", "280", "290", "300", "310", "320", "330", "340","350"]
-appendName = '_newKinFit'
+appendName = '_newKinFit3'
 
 for massPoint in massPoints:
 

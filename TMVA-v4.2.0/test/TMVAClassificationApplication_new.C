@@ -30,7 +30,7 @@
 
 using namespace TMVA;
 
-void TMVAClassificationApplication_new(TString myMethodList = "" , TString iFileName = "", TString bkgSample = "", TString sampleLocation = "", TString massPoint = "") 
+void TMVAClassificationApplication_new(TString myMethodList = "" , TString iFileName = "", TString bkgSample = "", TString sampleLocation = "", TString massPoint = "", TString oFileLocation = "") 
 {   
 #ifdef __CINT__
    gROOT->ProcessLine( ".O0" ); // turn off optimization in CINT
@@ -94,17 +94,17 @@ void TMVAClassificationApplication_new(TString myMethodList = "" , TString iFile
 //    reader->AddVariable( "svPt", &var5 );
 //    reader->AddVariable( "dRhh", &var6 );
    reader->AddVariable( "met", &var7 );
-   reader->AddVariable( "mJJReg", &var8 );
+   reader->AddVariable( "mJJ", &var8 );
 //    reader->AddVariable( "metTau1DPhi", &var9 );
 //    reader->AddVariable( "metTau2DPhi", &var10);
 //    reader->AddVariable( "metJ1DPhi", &var11);
-   reader->AddVariable( "metJ2DPhi", &var12 );
+//    reader->AddVariable( "metJ2DPhi", &var12 );
 //    reader->AddVariable( "metTauPairDPhi", &var13 );
 //    reader->AddVariable( "metSvTauPairDPhi", &var14 );
 //    reader->AddVariable( "metJetPairDPhi", &var15 );
 //    reader->AddVariable( "CSVJ1", &var16 );
 //    reader->AddVariable( "CSVJ2", &var17 );
-//    reader->AddVariable( "fMassKinFit", &var2 );
+   reader->AddVariable( "fMassKinFit", &var2 );
    reader->AddVariable( "chi2KinFit2", &var18 );
 
 
@@ -142,7 +142,7 @@ void TMVAClassificationApplication_new(TString myMethodList = "" , TString iFile
    TString fileName = iFileName;
    TString fname = sampleLocation;
    fname += fileName;
-   TString oFileName = sampleLocation;
+   TString oFileName = oFileLocation;
    oFileName += "ClassApp_" + bkgSample;
    oFileName += "_";
    oFileName += fileName;
@@ -177,17 +177,17 @@ void TMVAClassificationApplication_new(TString myMethodList = "" , TString iFile
 //    theTree->SetBranchAddress( "svPt", &vecVar5 );
 //    theTree->SetBranchAddress( "dRhh", &var6 );
    theTree->SetBranchAddress( "met", &vecVar7 );
-   theTree->SetBranchAddress( "mJJReg", &var8 );
+   theTree->SetBranchAddress( "mJJ", &var8 );
 //    theTree->SetBranchAddress( "metTau1DPhi", &var9 );
 //    theTree->SetBranchAddress( "metTau2DPhi", &var10);
 //    theTree->SetBranchAddress( "metJ1DPhi", &var11);
-   theTree->SetBranchAddress( "metJ2DPhi", &var12 );
+//    theTree->SetBranchAddress( "metJ2DPhi", &var12 );
 //    theTree->SetBranchAddress( "metTauPairDPhi", &var13 );
 //    theTree->SetBranchAddress( "metSvTauPairDPhi", &var14 );
 //    theTree->SetBranchAddress( "metJetPairDPhi", &var15 );
 //    theTree->SetBranchAddress( "CSVJ1", &var16 );
 //    theTree->SetBranchAddress( "CSVJ2", &var17 );
-//    theTree->SetBranchAddress( "fMassKinFit", &var2);
+   theTree->SetBranchAddress( "fMassKinFit", &var2);
    theTree->SetBranchAddress( "chi2KinFit2", &var18);
 
    //to get initial pre-processed events

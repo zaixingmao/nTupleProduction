@@ -7,7 +7,7 @@
 
 # varList = ['svMass', 'dRTauTau', 'dRJJ', 'met', 'mJJReg', 'metJ2DPhi', 'fMassKinFit', 'chi2KinFit']
 # varList = ['svMass', 'dRTauTau', 'dRJJ', 'met', 'mJJReg', 'metJ2DPhi', 'fMassKinFit', 'chi2KinFit2']
-varList = ['svMass', 'dRTauTau', 'dRJJ', 'met', 'mJJReg', 'metJ2DPhi', 'chi2KinFit2']
+varList = ['svMass', 'dRTauTau', 'dRJJ', 'met', 'mJJ', 'fMassKinFit', 'chi2KinFit2']
 
 # varList = ['svMass','met', 'mJJReg','chi2KinFit2']
 

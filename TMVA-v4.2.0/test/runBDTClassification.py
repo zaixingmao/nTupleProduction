@@ -26,9 +26,9 @@ varList = varsList.varList
 nVars = str(len(varList))
 nVars += ""
 
-# massPoints = ["260", "300", "350"]
-massPoints = ["260", "270", "280", "290", "300", "310", "320", "330", "340","350"]
-appendName = '_newKinFit3'
+massPoints = ["260", "300", "350"]
+# massPoints = ["260", "270", "280", "290", "300", "310", "320", "330", "340","350", "500","700"]
+appendName = '_n150_1M'
 
 for massPoint in massPoints:
 

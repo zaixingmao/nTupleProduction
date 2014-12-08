@@ -31,9 +31,17 @@ scram b -j 8
 ####run
 ```bash
 cd UWAnalysis/CRAB/LTau
-#To test runs
+```
+#####choose settings
+edit `SUB-TT.py` and `SUB-TT-data.py`, e.g.
+python```embedded=True```, or python```shift = 'tau'```
+
+#####to test
+```bash
 cmsRun SUB-TT.py
-#To submit jobs
+```
+#####to submit jobs
+```bash
 source sub.sh
 ```
 

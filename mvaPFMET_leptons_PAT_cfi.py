@@ -51,7 +51,7 @@ isotaus = cms.EDFilter(
     				 ' tauID("decayModeFinding") &&' +
     				 ' tauID("byCombinedIsolationDeltaBetaCorrRaw3Hits")<10 &&' +
     				 ' tauID("againstElectronLoose") &&' +
-    				 ' tauID("againstMuonLoose2")'
+    				 ' tauID("againstMuonLoose")'
     				 ),
     filter = cms.bool(False)
 )

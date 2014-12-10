@@ -46,10 +46,10 @@ isoelectrons = cms.EDFilter(
 isotaus = cms.EDFilter(
     "PATTauSelector",
     src = cms.InputTag("cleanPatTaus"),
-    cut = cms.string('pt > 19 &&' +
-    				 ' abs(eta) < 2.3 &&' +
+    cut = cms.string('pt > 45 &&' +
+    				 ' abs(eta) < 2.1 &&' +
     				 ' tauID("decayModeFinding") &&' +
-    				 ' tauID("byCombinedIsolationDeltaBetaCorrRaw3Hits")<10 &&' +
+    				 ' tauID("byCombinedIsolationDeltaBetaCorrRaw3Hits")<4 &&' +
     				 ' tauID("againstElectronLoose") &&' +
     				 ' tauID("againstMuonLoose")'
     				 ),
